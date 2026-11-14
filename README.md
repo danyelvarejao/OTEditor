@@ -51,6 +51,19 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
+### Linux (Nix / devenv)
+
+With [devenv](https://devenv.sh) installed, `devenv shell` (or `direnv allow` once, using the bundled `.envrc`) provides Qt 6, liblzma, CMake, and Ninja. Inside the shell:
+
+```sh
+build            # configure (Release) and compile into build/
+run-tests        # build and run the test suite headless
+run-editor       # launch build/bin/OTEditor
+install-desktop  # add an "OTEditor (dev)" launcher to ~/.local/share/applications
+```
+
+The shell pins `QT_PLUGIN_PATH` and `QML_IMPORT_PATH` to the project's Qt, so plugins from another Qt version in the user profile are not loaded. The desktop launcher embeds the same paths and always runs the latest local build; rerun `install-desktop` after `devenv.lock` changes.
+
 ## Compatibility
 
 OTEditor is not a complete replacement for ObjectBuilder. Complex nested XML is preserved but cannot be edited through the attribute controls. Conversion does not recreate unsupported client features or rewrite arbitrary server XML semantics.
