@@ -1,7 +1,6 @@
 name: Windows stable release
+# Manual only (gh workflow run release.yml --ref main) to save Actions minutes
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write

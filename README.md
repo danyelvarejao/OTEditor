@@ -76,6 +76,6 @@ ObjectBuilder version metadata is covered by [its MIT license](assets/ObjectBuil
 
 ## Automated releases and updates
 
-Each push to `main` builds and tests a Windows x64 package through GitHub Actions. The stable `1.0` release tag follows the published commit; the application version comes from CMake. Windows and source archives and SHA-256 checksums are uploaded before `update-manifest.json` advertises the new version.
+The **Windows stable release** GitHub Actions workflow builds and tests a Windows x64 package. It runs only when triggered manually (`gh workflow run release.yml --ref main`). The stable `1.0` release tag follows the published commit; the application version comes from CMake. Windows and source archives and SHA-256 checksums are uploaded before `update-manifest.json` advertises the new version.
 
 The app checks this channel at startup and from Help. Installation verifies the archive checksum, waits for all editor windows to close, replaces the installation with rollback on failure, and restarts the editor. Save pending project changes before installing. Increase the CMake application version for each update.
