@@ -4,3 +4,9 @@
 *.log
 
 /release/
+
+# devenv / direnv
+.devenv/
+.devenv.flake.nix
+.direnv/
+devenv.local.nix
