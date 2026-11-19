@@ -31,6 +31,12 @@ in
     QT_PLUGIN_PATH = qtPluginPath;
     QML_IMPORT_PATH = qmlImportPath;
     QML2_IMPORT_PATH = "";
+    # Native GTK dialogs; the QML FolderDialog cannot pick folders without subfolders.
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    GSETTINGS_SCHEMA_DIR = builtins.concatStringsSep ":" [
+      "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas"
+      "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas"
+    ];
   };
 
   scripts = {
